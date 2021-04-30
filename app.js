@@ -33,6 +33,16 @@ app.post("/register",(req,res) => {
 
 })
 
+app.get('/profiles',(req,res)=>{
+   const users = JSON.parse(JSON.stringify(userData));
+   for(let i=0;i<users.length;i++){
+       delete users[i].password;
+   }
+
+   res.json(users);
+
+})
+
 console.log(userData);
 app.listen(7050,()=>{
    console.log('app is working');
